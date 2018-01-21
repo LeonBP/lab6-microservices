@@ -1,16 +1,26 @@
 # Web Engineering 2017-2018 / Microservices
-Please, go to the [Wiki](https://github.com/UNIZAR-30246-WebEngineering/lab6-microservices/wiki) in order to get the instructions for this assignment.
 
-NIA    | User name | Repo | Improvement | Score
--------|-----------|------|-------------|--------
-681721 | Silvia Usón Fortanet |https://github.com/siluf/lab6-microservices/tree/test | |
-698367 | Iván Santamaría | https://github.com/ivsm/lab6-microservices/tree/test | |
-605472 | Marius Nemtanu | https://github.com/MIN605472/lab6-microservices/tree/test | |
-568051 | Sergio Andrés Muniesa | https://github.com/sandresmuniesa/lab6-microservices/tree/test | |
-680239 | Darío Sánchez | https://github.com/dari1495/lab6-microservices/tree/test | |
-684146| Iván Escuín González | https://github.com/crzyivo/lab6-microservices/tree/test | |
-453948 | Mario Navarro Claras | [Repository](https://github.com/mnclaras/lab6-microservices/tree/test) | |
-699328 | Xian Pan | https://github.com/DreamaerD/lab6-microservices/tree/test | |
-699329 | David Fustero | https://github.com/fiusa8/lab6-microservices/tree/test | |
-652062| Pedro Fortón Rubio | https://github.com/Concatenacion/lab6-microservices/tree/test | |
-702089 | Jorge Martínez Romanos | ![Repo](https://github.com/jmromanos/lab6-microservices/tree/test) | Proposal: Retry failed petitions to avoid error message |
+##  Two microservices running and registered
+First, the two microservices are started:
+![First microservice](imagesreport/twoterminals.png)
+![Second microservice](imagesreport/threeterminals.png)
+Note: The first microservice is the top-left terminal, and the second is the bottom-left.
+
+When both microservices are running, we can check they are registered by consulting the dashboard:
+![Both microservices registered](imagesreport/threeterminals-dashboard.png)
+
+##  A second account microservice in the port 4444
+This second account microservice is executed in a forth terminal (bottom-right).
+![A copy of the account microservice](imagesreport/fourterminals.png)
+
+We can check the effect of the above process by consulting again the dashboard:
+![Eureka warns of a possible malfunction](imagesreport/fourterminals-dashboard.png)
+
+## Microservice in port 2222 is killed
+First, we stop the microservice:
+![The microservice in 2222 is killed](imagesreport/fourterminals-2222stopped.png)
+
+We check if there has been any change in the dashboard:
+![The dashboard remains the same](imagesreport/fourterminals-2222stopped-dashboard.png)
+
+The dashboard remains the same. The web service can provide information about the accounts because there is at least one account microservice running (the one in the port 4444). Because the service is provided, Eureka cannot know if one of the account microservice copies is down.
