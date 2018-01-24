@@ -14,7 +14,7 @@ This second account microservice is executed in a forth terminal (bottom-right).
 ![A copy of the account microservice](imagesreport/fourterminals.png)
 
 We can check the effect of the above process by consulting again the dashboard:
-![Eureka warns of a possible malfunction](imagesreport/fourterminals-dashboard.png)
+![The service has been added to accounts](imagesreport/fourterminals-dashboard.png)
 
 ## Microservice in port 2222 is killed
 First, we stop the microservice:
@@ -23,4 +23,4 @@ First, we stop the microservice:
 We check if there has been any change in the dashboard:
 ![The dashboard remains the same](imagesreport/fourterminals-2222stopped-dashboard.png)
 
-The dashboard remains the same. The web service can provide information about the accounts because there is at least one account microservice running (the one in the port 4444). Because the service is provided, Eureka cannot know if one of the account microservice copies is down.
+The service has detected that there is a problem with one of the servers. The web service can provide information about the accounts because there is at least one account microservice running (the one in the port 4444). The service can be provided because Eureka works as a load balancer. This means that the web service sends requests to the account service (in this case in the port 2222), but the communication fails because that server is down. Then, Eureka tries with the other account server (4444) and it responds successfully. This results in some request failed but eventually the service is provided.
